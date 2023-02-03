@@ -7,18 +7,21 @@ import {
   Platform,
 } from "react-native"
 import React from "react"
+import { NavigationContainer } from "@react-navigation/native"
+import { createNativeStackNavigator } from "@react-navigation/native-stack"
+import Home from "./screens/Home"
+
+const Stack = createNativeStackNavigator()
 
 const Main = () => {
   return (
-    <SafeAreaView
-      style={{
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-      }}
-    >
-      <View>
-        <Text>Main</Text>
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Group>
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Group>
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
