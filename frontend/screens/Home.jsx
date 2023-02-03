@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from "react-native"
 import React from "react"
 import { defaultStyle } from "../styles/styles"
+import Header from "../components/Header"
 
 const Home = () => {
   return (
     <View style={defaultStyle}>
-      {/* Header */}
+      <Header emptyCart={true} />
 
       <View>
         <Text style={{ fontSize: 25 }}>Our</Text>
