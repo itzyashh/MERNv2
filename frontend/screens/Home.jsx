@@ -10,6 +10,7 @@ import { colors, defaultStyle } from "../styles/styles"
 import Header from "../components/Header"
 import { Avatar, Button } from "react-native-paper"
 import SearchModal from "../components/searchModal"
+import ProductCard from "../components/ProductCard"
 const categories = [
   { category: "Nice", _id: "asdasjkdh" },
   { category: "Nice2", _id: "asdhjasdhkj" },
@@ -23,28 +24,32 @@ const products = [
   {
     _id: "asdasdasjkdh",
     name: "Product 1",
+    stock: 213,
     price: 100,
     images: [
-      { url: "https://cdn.create.vista.com/api/media/308804920/medium" },
+      {
+        url: "https://img.freepik.com/free-vector/cosmetics-bottles-skin-care-beauty-product-line-with-sakura-flowers-marble-table-top_33099-1559.jpg?w=1060&t=st=1675696492~exp=1675697092~hmac=83ac9a259f4a404a87e59df741fcf61567dd6ee6e4a8a0fb45c75c799e4051a5",
+      },
     ],
   },
-  {
-    _id: "asdassddasjkdh",
-    name: "Product 1",
-    price: 100,
-    images: [
-      { url: "https://cdn.create.vista.com/api/media/308804920/medium" },
-    ],
-  },
+  // {
+  //   _id: "asdassddasjkdh",
+  //   name: "Product 1",
+  //   price: 100,
+  //   images: [
+  //     { url: "https://cdn.create.vista.com/api/media/308804920/medium" },
+  //   ],
+  // },
 ]
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const [category, setCategory] = useState(categories[0]._id)
   const [activeSearch, setActiveSearch] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
   const categoryHandler = (id) => {
     setCategory(id)
   }
+  const addToCartHandler = (id) => {}
   return (
     <>
       {activeSearch && (
@@ -120,6 +125,26 @@ const Home = () => {
                     {item.category}
                   </Text>
                 </Button>
+              )
+            }}
+          />
+        </View>
+        <View style={{ flex: 1 }}>
+          <FlatList
+            data={products}
+            keyExtractor={(item) => item._id}
+            renderItem={({ item, index }) => {
+              return (
+                <ProductCard
+                  id={item._id}
+                  stock={item.stock}
+                  price={item.price}
+                  name={item.name}
+                  image={item.images[0].url}
+                  addToCartHandler={addToCartHandler}
+                  i={index}
+                  navigate={navigation}
+                />
               )
             }}
           />
