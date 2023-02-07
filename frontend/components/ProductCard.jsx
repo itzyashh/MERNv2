@@ -37,7 +37,7 @@ const ProductCard = ({
             resizeMode: "contain",
             position: "absolute",
             top: 105,
-            left: 50,
+            left: 40,
             borderRadius: 20,
           }}
         />
@@ -86,7 +86,7 @@ const ProductCard = ({
             style={{
               padding: 15,
               fontWeight: "800",
-              color: i % 2 === 0 ? colors.veryPeri : colors.color2,
+              color: i % 2 === 0 ? colors.veryPeri : colors.white,
             }}
           >
             Add to Cart

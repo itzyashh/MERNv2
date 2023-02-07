@@ -2,9 +2,10 @@ import { View, Text, TouchableOpacity } from "react-native"
 import React from "react"
 import { Avatar } from "react-native-paper"
 import { colors } from "../styles/styles"
-import { useRoute } from "@react-navigation/native"
+import { useNavigation, useRoute } from "@react-navigation/native"
 
-const Header = ({ back, navigation, emptyCart = false }) => {
+const Header = ({ back, emptyCart = false }) => {
+  const navigation = useNavigation()
   const route = useRoute()
   const emptyCartHandler = () => {
     console.log("empty cart")

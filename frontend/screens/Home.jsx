@@ -11,6 +11,8 @@ import Header from "../components/Header"
 import { Avatar, Button } from "react-native-paper"
 import SearchModal from "../components/searchModal"
 import ProductCard from "../components/ProductCard"
+import Footer from "../components/Footer"
+import { useNavigation } from "@react-navigation/native"
 const categories = [
   { category: "Nice", _id: "asdasjkdh" },
   { category: "Nice2", _id: "asdhjasdhkj" },
@@ -32,20 +34,36 @@ const products = [
       },
     ],
   },
-  // {
-  //   _id: "asdassddasjkdh",
-  //   name: "Product 1",
-  //   price: 100,
-  //   images: [
-  //     { url: "https://cdn.create.vista.com/api/media/308804920/medium" },
-  //   ],
-  // },
+
+  {
+    _id: "asdasasddasjkdh",
+    name: "Product 2",
+    stock: 213,
+    price: 200,
+    images: [
+      {
+        url: "https://img.freepik.com/free-vector/cosmetics-bottles-skin-care-beauty-product-line-with-sakura-flowers-marble-table-top_33099-1559.jpg?w=1060&t=st=1675696492~exp=1675697092~hmac=83ac9a259f4a404a87e59df741fcf61567dd6ee6e4a8a0fb45c75c799e4051a5",
+      },
+    ],
+  },
+  {
+    _id: "asdasasderdasjkdh",
+    name: "Product 2",
+    stock: 213,
+    price: 200,
+    images: [
+      {
+        url: "https://img.freepik.com/free-vector/cosmetics-bottles-skin-care-beauty-product-line-with-sakura-flowers-marble-table-top_33099-1559.jpg?w=1060&t=st=1675696492~exp=1675697092~hmac=83ac9a259f4a404a87e59df741fcf61567dd6ee6e4a8a0fb45c75c799e4051a5",
+      },
+    ],
+  },
 ]
 
-const Home = ({ navigation }) => {
+const Home = () => {
   const [category, setCategory] = useState(categories[0]._id)
   const [activeSearch, setActiveSearch] = useState(false)
   const [searchQuery, setSearchQuery] = useState("")
+  const navigation = useNavigation()
   const categoryHandler = (id) => {
     setCategory(id)
   }
@@ -77,7 +95,7 @@ const Home = ({ navigation }) => {
           </View>
           {/* SearchBar */}
 
-          <View>
+          <View style={{ paddingRight: 35 }}>
             <TouchableOpacity onPress={() => setActiveSearch((prev) => !prev)}>
               <Avatar.Icon
                 icon={"magnify"}
@@ -131,6 +149,8 @@ const Home = ({ navigation }) => {
         </View>
         <View style={{ flex: 1 }}>
           <FlatList
+            horizontal
+            showsHorizontalScrollIndicator={false}
             data={products}
             keyExtractor={(item) => item._id}
             renderItem={({ item, index }) => {
@@ -150,6 +170,8 @@ const Home = ({ navigation }) => {
           />
         </View>
       </View>
+
+      <Footer activeRoute="Home" />
     </>
   )
 }
