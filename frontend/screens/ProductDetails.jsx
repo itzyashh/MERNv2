@@ -11,7 +11,8 @@ import { colors, defaultStyle } from "../styles/styles"
 import Header from "../components/Header"
 import Carousel from "react-native-snap-carousel"
 import { faker } from "@faker-js/faker"
-import { Avatar } from "react-native-paper"
+import { Avatar, Button } from "react-native-paper"
+import { Toast } from "react-native-toast-message/lib/src/Toast"
 const { width } = Dimensions.get("window")
 
 const iconOptions = {
@@ -26,19 +27,20 @@ const iconOptions = {
 
 const ProductDetails = ({ route }) => {
   const [quantity, setQuantity] = React.useState(1)
+  const [btnDisabled, setBtnDisabled] = React.useState(false)
 
   const ProductDetailsProps = {
     name: faker.commerce.productName(),
     price: faker.commerce.price(),
     description: faker.commerce.productDescription(),
-    stock: 2,
+    stock: 20,
   }
   console.log(faker.datatype.uuid())
   const images = [
     {
       id: faker.datatype.uuid(),
 
-      url: 'faker.image.imageUrl(640, 480, "product")',
+      url: "https://iconmonstr.com/wp-content/g/gd/makefg.php?i=../releases/preview/7.7.0/png/iconmonstr-reload-lined.png&r=255&g=15&b=23",
     },
     {
       id: faker.datatype.uuid(),
@@ -53,6 +55,20 @@ const ProductDetails = ({ route }) => {
 
   const incrementQty = () =>
     ProductDetailsProps.stock > quantity && setQuantity(quantity + 1)
+
+  const addToCartHandler = () => {
+    ProductDetailsProps.stock === 0 &&
+      Toast.show({
+        type: "error",
+        text1: "Out of stock",
+        text2: "Sorry, this product is out of stock",
+      })
+    Toast.show({
+      type: "success",
+      text1: "Added to cart",
+      text2: "This product has been added to your cart",
+    })
+  }
 
   return (
     <View
@@ -116,6 +132,15 @@ const ProductDetails = ({ route }) => {
             </TouchableOpacity>
           </View>
         </View>
+
+        <TouchableOpacity
+          onPress={addToCartHandler}
+          activeOpacity={0.8}
+          style={styles.btn}
+        >
+          <Avatar.Icon size={50} icon="cart" style={styles.btnIcon} />
+          <Text style={styles.btnText}>Add to Cart</Text>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -145,5 +170,25 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 1,
     borderColor: colors.light_gray,
+  },
+  btn: {
+    width: "90%",
+    alignSelf: "center",
+    backgroundColor: colors.color3,
+    paddingVertical: 5,
+    borderRadius: 50,
+    marginVertical: 20,
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  btnText: {
+    color: colors.white,
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 16,
+  },
+  btnIcon: {
+    backgroundColor: colors.transparent,
   },
 })

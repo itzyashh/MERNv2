@@ -27,7 +27,9 @@ const Header = ({ back, emptyCart = false }) => {
         </TouchableOpacity>
       )}
       <TouchableOpacity
-        onPress={emptyCart ? emptyCartHandler : () => navigation.goBack()}
+        onPress={
+          emptyCart ? emptyCartHandler : () => navigation.navigate("Cart")
+        }
         style={{ position: "absolute", zIndex: 10, top: 40, right: 20 }}
       >
         <Avatar.Icon
