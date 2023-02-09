@@ -14,7 +14,6 @@ export const colors = {
 
 export const defaultStyle = StyleSheet.create({
   padding: 35,
-  paddingRight: 0,
   paddingTop: Platform.OS === "android" ? StatusBar.currentHeight + 10 : 0,
   flex: 1,
   backgroundColor: colors.white,

@@ -78,7 +78,14 @@ const Home = () => {
           products={products}
         />
       )}
-      <View style={defaultStyle}>
+      <View
+        style={[
+          defaultStyle,
+          {
+            paddingRight: 0,
+          },
+        ]}
+      >
         <Header />
         {/* Heading Row */}
         <View
