@@ -15,7 +15,7 @@ import { Avatar, Button } from "react-native-paper"
 import { Toast } from "react-native-toast-message/lib/src/Toast"
 const { width } = Dimensions.get("window")
 
-const iconOptions = {
+export const iconOptions = {
   size: 25,
   style: {
     borderRadius: 5,
