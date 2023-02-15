@@ -1,3 +1,5 @@
+import { faker } from "@faker-js/faker"
+import React from "react"
 import {
   Dimensions,
   Image,
@@ -6,13 +8,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native"
-import React from "react"
-import { colors, defaultStyle } from "../styles/styles"
-import Header from "../components/Header"
+import { Avatar } from "react-native-paper"
 import Carousel from "react-native-snap-carousel"
-import { faker } from "@faker-js/faker"
-import { Avatar, Button } from "react-native-paper"
 import { Toast } from "react-native-toast-message/lib/src/Toast"
+import Header from "../components/Header"
+import { colors, defaultStyle } from "../styles/styles"
 const { width } = Dimensions.get("window")
 
 export const iconOptions = {
@@ -27,7 +27,6 @@ export const iconOptions = {
 
 const ProductDetails = ({ route }) => {
   const [quantity, setQuantity] = React.useState(1)
-  const [btnDisabled, setBtnDisabled] = React.useState(false)
 
   const ProductDetailsProps = {
     name: faker.commerce.productName(),
