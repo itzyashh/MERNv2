@@ -30,7 +30,7 @@ export const cartItems = [
     name: "Pizza",
     price: 200,
     stock: 10,
-    quantity: 1,
+    quantity: 2,
     image: testImages[1],
   },
 ]

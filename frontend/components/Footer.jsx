@@ -9,7 +9,7 @@ const Footer = ({ activeRoute }) => {
 
   const isAuth = false
 
-  const loading = false
+  const loading = true
   const navigationHandler = (key) => {
     switch (key) {
       case 0:

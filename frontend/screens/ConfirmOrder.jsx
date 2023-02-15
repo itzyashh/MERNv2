@@ -16,6 +16,7 @@ import { useNavigation } from "@react-navigation/native"
 import { Button } from "react-native-paper"
 
 const ConfirmOrder = () => {
+  const navigation = useNavigation()
   const priceDetails = {
     price: 4000,
     discount: 100,
@@ -58,7 +59,7 @@ const ConfirmOrder = () => {
       />
       <TouchableOpacity
         onPress={() =>
-          useNavigation.navigate("Payment", {
+          navigation.navigate("Payment", {
             total: total,
             tax: tax,
             delivery: priceDetails.delivery,
