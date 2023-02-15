@@ -31,7 +31,7 @@ const Main = () => {
           <Stack.Screen name="ConfirmOrder" component={ConfirmOrder} />
         </Stack.Group>
       </Stack.Navigator>
-      <Toast position="bottom" bottomOffset={20} />
+      <Toast position="top" topOffset={50} visibilityTime={1700} />
     </NavigationContainer>
   )
 }

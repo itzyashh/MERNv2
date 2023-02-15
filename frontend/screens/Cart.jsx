@@ -13,6 +13,8 @@ import { Avatar } from "react-native-paper"
 import CartItem from "../components/CartItem"
 import { testImages } from "../assets/testImages"
 import { useNavigation } from "@react-navigation/native"
+import { Toast } from "react-native-toast-message/lib/src/Toast"
+import { useEffect } from "react"
 
 export const cartItems = [
   {
@@ -41,6 +43,7 @@ const Cart = () => {
     console.log("decrement", id)
   }
   const navigation = useNavigation()
+
   return (
     <View style={[defaultStyle, { padding: 0 }]}>
       <Header back emptyCart />
@@ -81,7 +84,15 @@ const Cart = () => {
         <Text>₹5</Text>
       </View>
       <TouchableOpacity
-        onPress={() => navigation.navigate("ConfirmOrder")}
+        onPress={() =>
+          cartItems.length > 0
+            ? navigation.navigate("ConfirmOrder")
+            : Toast.show({
+                type: "error",
+                text1: "Cart is empty",
+                text2: "Add some items to cart",
+              })
+        }
         style={styles.btn}
       >
         <Avatar.Icon
