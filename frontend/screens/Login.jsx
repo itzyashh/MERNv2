@@ -36,12 +36,14 @@ const Login = ({ navigation }) => {
       <View>
         <Text style={styles.label}>Email</Text>
         <TextInput
+          keyboardType="email-address"
           style={styles.input}
           onChangeText={(text) => setEmail(text)}
           value={email}
         />
         <Text style={styles.label}>Password</Text>
         <TextInput
+          secureTextEntry
           style={styles.input}
           onChangeText={(text) => setPassword(text)}
           value={password}

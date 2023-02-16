@@ -19,6 +19,7 @@ import Login from "./screens/Login"
 import Spinner from "react-native-loading-spinner-overlay"
 import ForgetPassword from "./screens/ForgetPassword"
 import Verify from "./screens/Verify"
+import SignUp from "./screens/SignUp"
 
 const Stack = createNativeStackNavigator()
 
@@ -38,6 +39,7 @@ const Main = () => {
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
           <Stack.Screen name="Verify" component={Verify} />
+          <Stack.Screen name="SignUp" component={SignUp} />
         </Stack.Group>
       </Stack.Navigator>
       <Toast position="top" topOffset={50} visibilityTime={1700} />

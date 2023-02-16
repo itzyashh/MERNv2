@@ -34,6 +34,7 @@ const ForgetPassword = ({ navigation }) => {
       <View>
         <Text style={styles.label}>Email</Text>
         <TextInput
+          keyboardType="email-address"
           style={styles.input}
           onChangeText={(text) => setEmail(text)}
           value={email}
