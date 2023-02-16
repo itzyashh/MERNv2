@@ -11,16 +11,16 @@ import { colors, defaultStyle } from "../styles/styles";
 import { Button } from "react-native-paper";
 import Spinner from "react-native-loading-spinner-overlay";
 
-const Login = ({ navigation }) => {
+const ForgetPassword = ({ navigation }) => {
 
 
-  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
   const [password, setPassword] = useState("");
 
     let loading = false;
   const submitHandler = () => {
     console.log("submit");
-    navigation.navigate('Verify')
+    navigation.navigate('Login')
     };
 
 
@@ -30,53 +30,56 @@ const Login = ({ navigation }) => {
         
       <Spinner  visible={loading} textContent={"Loading..."} />
       <View style={{ marginBottom: 20 }}>
-        <Text style={styles.heading}> Login </Text>
+        <Text style={styles.heading}> Reset Password </Text>
       </View>
-      <Image source={require("../assets/loginLogo.png")} style={styles.img} />
       <View>
-        <Text style={styles.label}>Email</Text>
+        <Text style={styles.label}>OTP</Text>
         <TextInput
+          keyboardType="numeric"
+          placeholder="Enter OTP"
           style={styles.input}
-          onChangeText={(text) => setEmail(text)}
-          value={email}
+          onChangeText={(text) => setOtp(text)}
+          value={otp}
         />
+      
+       
+      </View>
+      <View>
         <Text style={styles.label}>Password</Text>
         <TextInput
+          placeholder="Enter new password"
           style={styles.input}
+          secureTextEntry
           onChangeText={(text) => setPassword(text)}
           value={password}
         />
-        <Text
-          onPress={() => navigation.navigate("ForgetPassword")}
-          style={{ textAlign: "right", opacity: 0.5 }}
-        >
-          Forgot Password?
-        </Text>
+      
+       
       </View>
 
       <TouchableOpacity
         
         onPress={submitHandler}
-        disabled={email.length === 0 || password.length === 0}
+        disabled={otp.length === 0 }
         activeOpacity={0.6}
         style={styles.button}
       >
-        <Text style={styles.buttonText}>Login</Text>
+        <Text style={styles.buttonText}>Send OTP</Text>
       </TouchableOpacity>
-      <Text style={{ opacity: 0.5, textAlign: "center", marginTop: 20 }}>
-        Don't have an account ? &nbsp;
+      <Text style={{ opacity: 0.5,fontSize:16, textAlign: "center", marginTop: 20 }}>
+        back to &nbsp;
         <Text
-          onPress={() => navigation.navigate("SignUp")}
+          onPress={() => navigation.navigate("ForgetPassword")}
           style={{ color: colors.veryPeri }}
         >
-          Sign Up
+          Resend OTP
         </Text>
       </Text>
     </View>
   );
 };
 
-export default Login;
+export default ForgetPassword;
 
 const styles = StyleSheet.create({
   heading: {
