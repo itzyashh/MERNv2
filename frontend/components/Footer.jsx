@@ -1,35 +1,35 @@
-import { View, TouchableOpacity } from "react-native"
-import React from "react"
-import { useNavigation } from "@react-navigation/native"
-import { colors } from "../styles/styles"
-import { Avatar } from "react-native-paper"
+import { View, TouchableOpacity } from "react-native";
+import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import { colors } from "../styles/styles";
+import { Avatar } from "react-native-paper";
 
 const Footer = ({ activeRoute }) => {
-  const navigate = useNavigation()
+  const navigate = useNavigation();
 
-  const isAuth = false
+  const isAuth = true;
 
-  const loading = true
+  const loading = true;
   const navigationHandler = (key) => {
     switch (key) {
       case 0:
-        navigate.navigate("Home")
-        break
+        navigate.navigate("Home");
+        break;
       case 1:
-        navigate.navigate("Cart")
-        break
+        navigate.navigate("Cart");
+        break;
       case 2:
         if (isAuth) {
-          navigate.navigate("Profile")
+          navigate.navigate("Profile");
         } else {
-          navigate.navigate("Login")
+          navigate.navigate("Login");
         }
-        break
+        break;
       default:
-        navigate.navigate("Home")
-        break
+        navigate.navigate("Home");
+        break;
     }
-  }
+  };
 
   return (
     loading && (
@@ -50,7 +50,15 @@ const Footer = ({ activeRoute }) => {
           >
             <Avatar.Icon
               style={{ backgroundColor: colors.veryPeri }}
-              icon={activeRoute === "Cart" ? "account" : "account-outline"}
+              icon={
+                !isAuth
+                  ? activeRoute === "Profile"
+                    ? "login"
+                    : "login-variant"
+                  : activeRoute === "Cart"
+                  ? "account"
+                  : "account-outline"
+              }
             />
           </TouchableOpacity>
         </View>
@@ -79,7 +87,7 @@ const Footer = ({ activeRoute }) => {
         </View>
       </View>
     )
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -11,6 +11,7 @@ import { useState } from "react";
 import { colors, defaultStyle } from "../styles/styles";
 import { Avatar, Button } from "react-native-paper";
 import Spinner from "react-native-loading-spinner-overlay";
+import FormHeading from "../components/miniComponents/FormHeading";
 
 const SignUp = ({ navigation }) => {
 
@@ -39,9 +40,7 @@ const SignUp = ({ navigation }) => {
     <View style={[defaultStyle]}>
         
       <Spinner  visible={loading} textContent={"Loading..."} />
-      <View style={{ marginBottom: 20 }}>
-        <Text style={styles.heading}>Sign Up </Text>
-      </View>
+      <FormHeading title="Sign Up" />
     <ScrollView
       showsVerticalScrollIndicator={false}
       style={{ elevation:3,borderRadius:10,backgroundColor:colors.white, padding: 20 }}
@@ -146,13 +145,7 @@ const SignUp = ({ navigation }) => {
 export default SignUp;
 
 const styles = StyleSheet.create({
-  heading: {
-    paddingTop: 50,
-    fontSize: 40,
-    fontWeight: "500",
-    color: colors.veryPeri,
-    marginBottom: 10,
-  },
+ 
   label: {
     fontSize: 16,
     fontWeight: "400",

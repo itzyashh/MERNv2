@@ -10,6 +10,7 @@ import React from "react"
 import { colors } from "../styles/styles"
 import { Avatar } from "react-native-paper"
 import { iconOptions } from "../screens/ProductDetails"
+import { useNavigation } from "@react-navigation/native"
 
 const CartItem = ({
   key,
@@ -22,7 +23,9 @@ const CartItem = ({
   id,
   incrementHandler,
   decrementHandler,
+  navigation,
 }) => {
+  
   return (
     <View
       style={{
@@ -39,7 +42,7 @@ const CartItem = ({
           borderBottomRightRadius: 50,
         }}
       >
-        <Image source={{ uri: img }} style={styles.img} />
+        <Image onPress={()=>navigation.navigate('ProductDetails',{id})} source={{ uri: img }} style={styles.img} />
       </View>
       <View
         style={{
@@ -47,7 +50,7 @@ const CartItem = ({
           paddingHorizontal: 20,
         }}
       >
-        <Text style={{ fontSize: 17 }}>{name}</Text>
+        <Text onPress={()=>navigation.navigate('ProductDetails',{id})} style={{ fontSize: 17 }}>{name}</Text>
         <Text style={{ fontSize: 17, fontWeight: "900" }}>₹{price}</Text>
       </View>
       <View

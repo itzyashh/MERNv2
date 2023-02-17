@@ -69,6 +69,7 @@ const Cart = () => {
               id={item.product}
               incrementHandler={incrementHandler}
               decrementHandler={decrementHandler}
+              navigation={navigation}
             />
           )
         }}
