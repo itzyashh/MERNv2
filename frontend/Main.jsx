@@ -21,6 +21,8 @@ import ForgetPassword from "./screens/ForgetPassword"
 import Verify from "./screens/Verify"
 import SignUp from "./screens/SignUp"
 import Profile from "./screens/Profile"
+import UpdateProfile from "./screens/UpdateProfile"
+import ChangePassword from "./screens/ChangePassword"
 
 const Stack = createNativeStackNavigator()
 
@@ -44,6 +46,8 @@ const Main = () => {
           <Stack.Screen name="SignUp" component={SignUp} />
 
           <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="UpdateProfile" component={UpdateProfile} />
+          <Stack.Screen name="ChangePassword" component={ChangePassword} />
         </Stack.Group>
       </Stack.Navigator>
       <Toast position="top" topOffset={50} visibilityTime={1700} />

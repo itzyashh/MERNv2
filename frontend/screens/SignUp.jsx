@@ -131,7 +131,7 @@ const SignUp = ({ navigation }) => {
         Already have an account?
         &nbsp;
         <Text
-          onPress={() => navigation.navigate("SignUp")}
+          onPress={() => navigation.navigate("Login")}
           style={{ color: colors.veryPeri }}
         >
         Login
