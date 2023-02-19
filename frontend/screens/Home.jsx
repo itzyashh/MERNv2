@@ -61,6 +61,9 @@ const categories = [
     ],
     category: "Nice3",
   },
+  
+
+  
 ]
 
 const Home = () => {

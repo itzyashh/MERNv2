@@ -20,7 +20,7 @@ const ProductListItem = ({ item, index }) => {
         flexDirection: "row",
         justifyContent: "space-around",
         alignItems: "center",
-        marginTop: 20,
+        marginTop: 10,
         backgroundColor: colors.light_gray_dark,
         padding: 12,
         paddingHorizontal: 10,
@@ -100,13 +100,13 @@ const ProductListItem = ({ item, index }) => {
 export const OnHoldProduct = ({deleteHandler,id}) => {
     const navigation = useNavigation()
     console.log(id)
-    return (
+    return (<>
         <View
         style={{
           flexDirection: "row",
           justifyContent: "space-around",
           alignItems: "center",
-          marginTop: 20,
+          marginTop: 15,
           backgroundColor: colors.light_gray_dark,
           padding: 12,
           paddingHorizontal: 10,
@@ -130,7 +130,10 @@ export const OnHoldProduct = ({deleteHandler,id}) => {
         }}
             >Delete</Text>
         </TouchableOpacity>
+        
       </View>
+        <Text style={{alignSelf:'center',fontSize: 8,marginTop:5,color:'gray'}} >Tap and hold to dismiss</Text>
+        </>
     )
 }
 

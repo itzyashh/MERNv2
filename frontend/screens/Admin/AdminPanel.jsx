@@ -3,10 +3,11 @@ import React from 'react'
 import { colors, defaultStyle } from '../../styles/styles'
 import Header from '../../components/Header'
 import FormHeading from '../../components/miniComponents/FormHeading'
-import { ActivityIndicator } from 'react-native-paper'
+import { ActivityIndicator, Avatar } from 'react-native-paper'
 import { ButtonBox } from '../Profile'
 import { products } from '../Home'
 import ProductListItem from '../../components/ProductListItem'
+import Chart from '../../components/Chart'
 
 const AdminPanel = () => {
     const loading = false
@@ -28,7 +29,7 @@ const AdminPanel = () => {
     <View        style={defaultStyle}    >
         <Header back />
         <View
-            style={{paddingTop:50,marginBottom:20,alignSelf:'center'    }}
+            style={{paddingTop:50,marginBottom:0,alignSelf:'center'    }}
         >
             <FormHeading title="Admin Panel" />
         </View>
@@ -43,6 +44,10 @@ const AdminPanel = () => {
             )
             :
             (<>
+                <Chart
+                    inStock={12}
+                    outOfStock={5}
+                 />
                 <View
                 style={{flexDirection:'row',justifyContent:'space-around'}}
                 >
@@ -60,7 +65,10 @@ const AdminPanel = () => {
                     <Text style={styles.headingText} >Stock</Text>
 
                 </View>
+                <Text style={{alignSelf:'center',fontSize: 8,marginTop:5,color:'gray'}} >Tap and hold to select and edit</Text>
+                <Avatar.Icon icon="arrow-down-left" size={20} color='gray' style={{alignSelf:'center',backgroundColor:colors.transparent}} />
                 <FlatList
+                    showsVerticalScrollIndicator={false}
                     data={products}
                     keyExtractor={(item) => item._id}
                     renderItem={({item,index}) => (
