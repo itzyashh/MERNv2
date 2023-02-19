@@ -39,7 +39,7 @@ const Chart = ({outOfStock=0,inStock=0}) => {
         };
   return (
     <View
-       
+     
     >
         <PieChart
   data={data}

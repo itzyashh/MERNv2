@@ -9,14 +9,19 @@ import { products } from '../Home'
 import ProductListItem from '../../components/ProductListItem'
 import Chart from '../../components/Chart'
 
-const AdminPanel = () => {
+const AdminPanel = ({navigation}) => {
     const loading = false
 
     const navigationHandler = (text) => {
         switch (text) {
             case 'Product':
-                console.log("product")
+                navigation.navigate('AddProduct')
                 break;
+            case 'Orders':
+                navigation.navigate('AdminOrders')
+                break;
+            case 'Category':
+                navigation.navigate('AddCategory')
             default:
                 console.log("default")
                 break;
