@@ -23,22 +23,23 @@ const categories = [
   { category: "Nice6", _id: "asdasdasjkdh" },
 ]
 
-const products = [
+ export const products = [
   {
     _id: "asdasdasjkdh",
-    name: "Product 1",
-    stock: 213,
+    name: "Sakura Beauty",
+    stock: 13,
     price: 100,
     images: [
       {
         url: "https://img.freepik.com/free-vector/cosmetics-bottles-skin-care-beauty-product-line-with-sakura-flowers-marble-table-top_33099-1559.jpg?w=1060&t=st=1675696492~exp=1675697092~hmac=83ac9a259f4a404a87e59df741fcf61567dd6ee6e4a8a0fb45c75c799e4051a5",
       },
     ],
+    category: "Nice",
   },
 
   {
     _id: "asdasasddasjkdh",
-    name: "Product 2",
+    name: "Da Beauty",
     stock: 213,
     price: 200,
     images: [
@@ -46,17 +47,19 @@ const products = [
         url: "https://img.freepik.com/free-vector/cosmetics-bottles-skin-care-beauty-product-line-with-sakura-flowers-marble-table-top_33099-1559.jpg?w=1060&t=st=1675696492~exp=1675697092~hmac=83ac9a259f4a404a87e59df741fcf61567dd6ee6e4a8a0fb45c75c799e4051a5",
       },
     ],
+    category: "Nice2",
   },
   {
-    _id: "asdasasderdasjkdh",
-    name: "Product 2",
-    stock: 213,
+    _id: "asdadafg",
+    name: "Peachy Pair",
+    stock: 313,
     price: 200,
     images: [
       {
         url: "https://img.freepik.com/free-vector/cosmetics-bottles-skin-care-beauty-product-line-with-sakura-flowers-marble-table-top_33099-1559.jpg?w=1060&t=st=1675696492~exp=1675697092~hmac=83ac9a259f4a404a87e59df741fcf61567dd6ee6e4a8a0fb45c75c799e4051a5",
       },
     ],
+    category: "Nice3",
   },
 ]
 

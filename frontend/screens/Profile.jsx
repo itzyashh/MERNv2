@@ -92,7 +92,7 @@ const Profile = ({navigation}) => {
   )
 }
 
-const ButtonBox = ({icon,text,handler,reverse=false,loading=false}) => {
+export const ButtonBox = ({icon,text,handler,reverse=false,loading=false}) => {
     return (
         <TouchableOpacity onPress={() =>handler(text)} disabled={loading} style={{ justifyContent:'space-around' ,backgroundColor:reverse?colors.veryPeri:colors.color3,height:74,width:74,borderRadius:5,alignItems: 'center',}}>
             <Avatar.Icon size={50} icon={icon} style={{top:-7,alignSelf:"center",backgroundColor:colors.transparent,marginTop:10}} />
