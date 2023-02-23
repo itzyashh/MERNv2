@@ -27,6 +27,7 @@ import AdminPanel from "./screens/Admin/AdminPanel"
 import AddCategory from "./screens/Admin/AddCategory"
 import AdminOrders from "./screens/Admin/AdminOrders"
 import UpdateProduct from "./screens/Admin/UpdateProduct"
+import NewProduct from "./screens/Admin/NewProduct"
 
 const Stack = createNativeStackNavigator()
 
@@ -58,6 +59,7 @@ const Main = () => {
           <Stack.Screen name="AddCategory" component={AddCategory} />
           <Stack.Screen name="AdminOrders" component={AdminOrders} />
           <Stack.Screen name="UpdateProduct" component={UpdateProduct} />
+          <Stack.Screen name="NewProduct" component={NewProduct} />
         </Stack.Group>
       </Stack.Navigator>
       <Toast position="top" topOffset={50} visibilityTime={1700} />

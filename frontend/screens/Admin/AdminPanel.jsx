@@ -15,13 +15,14 @@ const AdminPanel = ({navigation}) => {
     const navigationHandler = (text) => {
         switch (text) {
             case 'Product':
-                navigation.navigate('AddProduct')
+                navigation.navigate('NewProduct')
                 break;
             case 'Orders':
                 navigation.navigate('AdminOrders')
                 break;
             case 'Category':
                 navigation.navigate('AddCategory')
+                break;
             default:
                 console.log("default")
                 break;

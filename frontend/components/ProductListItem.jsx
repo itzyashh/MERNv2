@@ -115,19 +115,22 @@ export const OnHoldProduct = ({deleteHandler,id}) => {
         }}
       >
         <TouchableOpacity
+       
         onPress={() => navigation.navigate('UpdateProduct',{id})}
         >
-            <Text>Edit</Text>
+            <Text
+             style={{padding: 10,backgroundColor: colors.white, borderRadius: 10,width: 70,textAlign: 'center',}}
+            >Edit</Text>
         </TouchableOpacity>
         <TouchableOpacity
         onPress={deleteHandler}
         >
             <Text
-            style={{color:'red',
-            fontSize: 16,
+                         style={{padding: 10,
+                          textAlign: 'center',
+                          color: 'red',
+                          backgroundColor: colors.white, borderRadius: 10,width: 70,}}
 
-
-        }}
             >Delete</Text>
         </TouchableOpacity>
         
