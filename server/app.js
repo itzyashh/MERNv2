@@ -8,6 +8,9 @@ config(
 );
 export const app = express();
 
+// Body parser
+app.use(express.json())
+
 app.get('/',(req,res,next) => {
     res.send('Hello World')
 })

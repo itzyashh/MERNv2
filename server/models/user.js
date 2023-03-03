@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import validator from "validator";
+import bcrypt from "bcrypt";
 
 const schema = new mongoose.Schema({
     name: {
@@ -19,7 +20,7 @@ const schema = new mongoose.Schema({
         select: false
     },
     pinCode: {
-        type: String,
+        type: Number,
         required: [true, 'Please add a pinCode'],
     },
     address: {
@@ -54,5 +55,14 @@ const schema = new mongoose.Schema({
 
 
 })
+
+schema.pre('save', async function(next) {
+   
+    this.password = await bcrypt.hash(this.password, 10)
+})
+
+schema.methods.comparePassword = async function(password) {
+    return await bcrypt.compare(password, this.password)
+}
 
 export const User = mongoose.model('User',schema)
