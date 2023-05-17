@@ -5,6 +5,7 @@
 
 # Environment variables
 .env
+config/
 
 # Build output
 /client/build
