@@ -1,42 +1,55 @@
-import { User } from "../models/user.js";
+import { User } from "../models/user.js"
 
-export const signup = async (req, res, next) => {
-  
-  const { name, email, password, pinCode, address, city, state, country } =
-  req.body;
-  let user = await User.findOne({ email });
-  if (user) {
-    return res
-      .status(400)
-      .json({ success: false, message: "User already exists" });
-  }
-  await User.create({
-    name,
-    email,
-    password,
-    pinCode,
-    address,
-    city,
-    state,
-    country,
-  });
-  res.status(201).json({ success: true });
-};
+export const test = (req, res) => {
+    res.send(`Email: ${req.body.email} Password: ${req.body.password}`)
 
-export const login = async (req, res, next) => {
-  const { email, password } = req.body;
-  const user = await User.findOne({ email }).select("+password");
-  if (!user) {
-    return res.status(404).json({ success: false, message: "User not found" });
-  }
-  const isPasswordMatched = await user.comparePassword(password);
-  if (!isPasswordMatched) {
-    return res
-      .status(401)
-      .json({ success: false, message: "Invalid credentials" });
-  }
-  const token = await user.generateToken();
-  res.status(200).cookie("token",token,{
-        expires: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000), // 15 days
-  }).json({ success: true, token });
-};
+}
+
+export const register = async (req, res) => {
+
+    const existingUser = await User.findOne({email:req.body.email})
+    if (existingUser) {
+       return res.status(409).json({
+            success: false,
+            message: "User already exists"
+        })}
+
+    const newUser = new User({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        address: req.body.address,
+        state: req.body.state,
+        city: req.body.city,
+        country: req.body.country,
+        pinCode: req.body.pinCode
+    })
+
+    await newUser.save()
+    res.status(201).json({
+        success: true,
+        message: "User created successfully"
+    })
+}
+
+export const login = async (req, res) => {
+    const { email, password } = req.body
+    const user = await User.findOne({ email })
+    if (!user) {
+        return res.status(404).json({
+            success: false,
+            message: "User not found"
+        })
+    }
+    const isMatch = await user.verifyPassword(password)
+    if (!isMatch) {
+        return res.status(404).json({
+            success: false,
+            message: "Incorrect password"
+        })
+    }
+    res.status(200).json({
+        success: true,
+        message: "Login successful"
+    })
+}

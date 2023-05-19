@@ -1,19 +1,15 @@
 import express from 'express';
-import {config} from 'dotenv';
-import userRouter from './routes/user.js'
-config(
+import dotenv from 'dotenv';
+
+dotenv.config(
     {
-        path: './data/config.env'
+        path: './config/config.env'
     }
 );
 export const app = express();
 
-// Body parser
-app.use(express.json())
+import user from './routes/user.js';
+app.use(express.json());
+app.use('/api/v1/user', user);
 
-app.get('/',(req,res,next) => {
-    res.send('Hello World')
-})
 
-// Mounting the routers
-app.use('/api/v1/user',userRouter)
