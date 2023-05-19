@@ -9,7 +9,7 @@ dotenv.config(
 export const app = express();
 
 import user from './routes/user.js';
-
+app.use(express.json());
 app.use('/api/v1/user', user);
 
 
